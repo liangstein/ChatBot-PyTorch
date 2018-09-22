@@ -28,6 +28,14 @@ A seq2seq based chatbot built with PyTorch
 'well we better at in look thousand in'
 >>> chat("whoever you love it must not be a human")
 "the such stupid your world it's more problems kill a be kind for them by mind"
+>>> chat("tell a joke")
+'just steal'
+>>> chat("just me")
+'i planning to do said you played'
+>>> chat("do more with less")
+'exactly'
+>>> chat("time is money but human needs to sleep for eight hours every day")
+'my morning hours'
 ```
 
 
