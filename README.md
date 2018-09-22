@@ -5,6 +5,7 @@ A seq2seq based chatbot built with PyTorch
 2, Python 3
 
 # Tests
+```
 >>> chat("it's a good day isn't it")
 'yeah'
 >>> chat("how old are you")
@@ -27,3 +28,7 @@ A seq2seq based chatbot built with PyTorch
 'well we better at in look thousand in'
 >>> chat("whoever you love it must not be a human")
 "the such stupid your world it's more problems kill a be kind for them by mind"
+```
+
+
+Dataset is not large, just 150000 dialogues.
