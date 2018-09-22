@@ -1,8 +1,8 @@
 # ChabBot-PyTorch
 A seq2seq based chatbot built with PyTorch
 # Dependencies
-1, PyTorch 0.4.1
-2, Python 3
+* 1, PyTorch 0.4.1
+* 2, Python 3
 
 # Tests
 ```
