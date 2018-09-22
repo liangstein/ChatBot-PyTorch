@@ -39,4 +39,4 @@ A seq2seq based chatbot built with PyTorch
 ```
 
 
-Dataset is not large, just 150000 dialogues.
+Dataset is cornell movie-dialogs corpus. Just 150000 dialogues were used for training.
