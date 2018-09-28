@@ -1,42 +1,51 @@
 # ChabBot-PyTorch
-A seq2seq based chatbot built with PyTorch
+A seq2seq based chatbot built with PyTorch, trained with Chinese datasets.
 # Dependencies
 * 1, PyTorch 0.4.1
 * 2, Python 3
 
 # Tests
 ```
->>> chat("it's a good day isn't it")
-'yeah'
->>> chat("how old are you")
-'twenty'
->>> chat("how do you do")
-'how do you do'
->>> chat("how are you")
-'fine'
->>> chat("who's your favorite music star")
-"she's the"
->>> chat("i like taylor swift")
-'thanks years'
->>> chat("bye bye and see you later")
-'sure'
->>> chat("hi i'm back it's hot")
-'hi how'
->>> chat("why is it so hot")
-"because you're isn't used but just wants out a dance"
->>> chat("i'll never go outside when the temperature is so high")
-'well we better at in look thousand in'
->>> chat("whoever you love it must not be a human")
-"the such stupid your world it's more problems kill a be kind for them by mind"
->>> chat("tell a joke")
-'just steal'
->>> chat("just me")
-'i planning to do said you played'
->>> chat("do more with less")
-'exactly'
->>> chat("time is money but human needs to sleep for eight hours every day")
-'my morning hours'
+>>> chat("早上好")
+'早上好，奚'
+>>> chat("下午好")
+'请我吃午餐可以吗'
+>>> chat("晚上好")
+'我的麻麻你啦'
+>>> chat("机器人不需要吃午餐")
+'那要么的吃太鲜掉毛'
+>>> chat("世界上谁最帅")
+'何路'
+>>> chat("何路是谁")
+'傲梦的贝儿！'
+>>> chat("贝尔在哪")
+'北京西金'
+>>> chat("尼玛")
+'(￣▽￣)'
+>>> chat("上海去过没")
+'一海初上啦'
+>>> chat("上海")
+'看不起外地人的破地方'
+>>> chat("上海 南京 北京")
+'国帝王死'
+>>> chat("南京")
+'来旅游，地铁出行是首选'
+>>> chat("无锡")
+"文龙哥说'可爱的依依在那里"
+>>> chat("我是男是女")
+'这么可爱一定是男孩纸'
+>>> chat("你是男是女")
+'我不喜欢这样归类'
+>>> chat("我喜欢男还是女")
+'喔~较！是女人想simai'
+>>> chat("你喜欢男还是女")
+'喔~当然是男人，simaimi喜欢搞基'
+>>> chat("卧槽")
+'不要啊，主人，我很乖的'
+>>> chat("卧槽 一只大傻逼")
+'就是你种打般'
+>>> chat("卧槽 一只智障")
+'就知道～'
 ```
 
-
-Dataset is cornell movie-dialogs corpus. Just 150000 dialogues were used for training.
+Datasets is 小黄鸡语料。All duplicated question pairs are dropped out as the first duplicated question pairs are kept, the preprocessed dataset has about 260000 question-answer pairs. 
