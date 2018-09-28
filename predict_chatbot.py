@@ -45,7 +45,7 @@ for i in range(len(params_attention)):
 #encoder.cuda();decoder.cuda();attention.cuda() # uncomment if you have cuda gpus
 def chat(string):
     q_vec=np.zeros((1,maxlen_q+1))
-    for i,ele in enumerate(string.split(" ")):
+    for i,ele in enumerate(string):
         q_vec[0,i]=word_index_dict[ele]
     input_tensor=torch.from_numpy(q_vec).type(torch.LongTensor)
     outputs,_=encoder(input_tensor,attention)
@@ -61,4 +61,4 @@ def chat(string):
             reply.append(index_word_dict[indice-1])
         else:
             break
-    return " ".join(reply)
+    return "".join(reply)

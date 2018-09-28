@@ -5,10 +5,36 @@ import torch.nn.functional as F
 from models_are_here import Attention_layer,EncoderRNN,DecoderRNN
 import pickle
 import numpy as np
-with open("less_length_questions","rb") as f:
+'''with open("less_length_questions","rb") as f:
     questions_tok=pickle.load(f)
 
 with open("less_length_answers","rb") as f:
+    answers_tok=pickle.load(f)
+
+Q_A_dict={}
+questions_tok_no_repeat,answers_tok_no_repeat=[],[]
+for i in range(len(questions_tok)):
+    Q=tuple(questions_tok[i])
+    A=tuple(answers_tok[i])
+    if Q in Q_A_dict:
+        pass
+    else:
+        Q_A_dict[Q] = A
+
+for x in Q_A_dict:
+    questions_tok_no_repeat.append(x)
+    answers_tok_no_repeat.append(Q_A_dict[x])
+
+with open("Q_no_repeat","wb") as f:
+    pickle.dump(questions_tok_no_repeat,f,protocol=pickle.HIGHEST_PROTOCOL)
+
+with open("A_no_repeat","wb") as f:
+    pickle.dump(answers_tok_no_repeat,f,protocol=pickle.HIGHEST_PROTOCOL)'''
+
+with open("Q_no_repeat","rb") as f:
+    questions_tok=pickle.load(f)
+
+with open("A_no_repeat","rb") as f:
     answers_tok=pickle.load(f)
 
 maxlen_q,maxlen_a=19,19
@@ -27,7 +53,7 @@ with open("index_word_dict","rb") as f:
     index_word_dict=pickle.load(f)
 
 
-setting_batch_size=200
+setting_batch_size=400
 encoder=EncoderRNN(len(word_index_dict)+1,1024,1024).cuda() # input has no EOS indice
 decoder=DecoderRNN(1024,1024,len(index_word_dict)+2).cuda() # final output contains EOS indice
 attention=Attention_layer(maxlen_q+1).cuda()
@@ -36,7 +62,7 @@ params_encoder,params_decoder,params_attention=\
 #attention_layer_list=[Attention_layer(ele).cuda() for ele in maxlength_list]
 #attention_layers_params=[ele.parameters() for ele in attention_layer_list]
 optimizer=optim.Adam(params_encoder+params_decoder+params_attention)
-sheduler=optim.lr_scheduler.ReduceLROnPlateau(optimizer,mode="min",factor=0.5,patience=3)
+sheduler=optim.lr_scheduler.ReduceLROnPlateau(optimizer,mode="min",factor=0.5,patience=10)
 loss=nn.CrossEntropyLoss(ignore_index=0)
 steps_per_epoch=int(len(questions_tok)/setting_batch_size)
 for epoch in range(2000):
@@ -72,7 +98,7 @@ for epoch in range(2000):
         loss_lists.append(l.cpu().data.numpy())
     with open("losses","a") as f:
         epoch_loss=np.mean(loss_lists)
-        f.write("Loss: {}\n".format(str(epoch_loss)))
+        f.write("Epoch: {}, Loss: {}\n".format(str(epoch),str(epoch_loss)))
     sheduler.step(epoch_loss)
     #check model weights
     with open("weights/encoder","wb") as f:
