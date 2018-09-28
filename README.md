@@ -48,4 +48,4 @@ A seq2seq based chatbot built with PyTorch, trained with Chinese datasets.
 '就知道～'
 ```
 
-Datasets is 小黄鸡语料。All duplicated question pairs are dropped out as the first duplicated question pairs are kept, the preprocessed dataset has about 260000 question-answer pairs. 
+Datasets is 小黄鸡语料。All duplicated question pairs are dropped out as the first duplicated question pairs are kept, the preprocessed dataset has about 260000 question-answer pairs. Note that the used training dataset is not high quality, a good dataset leads to a  much better chatbot, as opensource high quality chinese Q-A dataset is nearly zero in the internet. It is very possible to develop an assistant in a special field using a specialized dataset, if I have the dataset. 
